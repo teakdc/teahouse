@@ -9,13 +9,10 @@
 {% if entry %}
 <div class="entry">
   <h2>{{ entry.title }}</h2>
-  {{ entry.text|markdown }}
+  {{ entry.text|safe }}
   <br>
   <small>Категории: 
-    {% for tag in tags %}
-      {% if not forloop.first %}, {% endif %}
-      <a href="/tags/{{ tag.id }}/">{{ tag }}</a>
-    {% endfor %}
+    {% for tag in tags %}{% if not forloop.first %}, {% endif %}<a href="/tags/{{ tag.id }}/">{{ tag }}</a>{% endfor %}
     <br>
          Дата публикации: {{ entry.date_publication }}</small>
   <p class="tar"><a href="/">На главную</a></p>
